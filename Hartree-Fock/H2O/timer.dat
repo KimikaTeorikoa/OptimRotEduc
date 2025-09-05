@@ -1,16 +1,16 @@
 
-Host: Loxias-3.local
+Host: OptiPlex-Tower-Plus-7020
 
-Timers On : Tue Jul  8 13:12:37 2025
-Timers Off: Tue Jul  8 22:22:25 2025
+Timers On : Fri Sep  5 10:52:04 2025
+Timers Off: Fri Sep  5 11:43:18 2025
 
-Wall Time:    32988.58 seconds
+Wall Time:     3074.64 seconds
 
                                                        Time (seconds)
 Module                                       User      System        Wall        Calls
-Libint2ERI::Libint2ERI              :      0.033u      0.000s      0.055w     35 calls
+Libint2ERI::Libint2ERI              :      3.983u      0.033s      0.097w     35 calls
 
 --------------------------------------------------------------------------------------
-Libint2ERI::Libint2ERI              :      0.033u      0.000s      0.055w     35 calls
+Libint2ERI::Libint2ERI              :      3.983u      0.033s      0.097w     35 calls
 
 **************************************************************************************
