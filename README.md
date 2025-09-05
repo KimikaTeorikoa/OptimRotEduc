@@ -1,3 +1,3 @@
-# Hartree-Fock: Algorithm coding and Hyperparameter Tunning
+# OrbOptRot
 
-This folder contains the files for solving Hartree-Fock with Steepest gradient descent, Conjugate Gradients, AdaGrad, RMSProp and ADAM.
+This repo contains the files for teaching Steepest gradient descent, Conjugate Gradients, AdaGrad, RMSProp and ADAM in the context of Hartree-Fock and Natural Orbital Theory.
