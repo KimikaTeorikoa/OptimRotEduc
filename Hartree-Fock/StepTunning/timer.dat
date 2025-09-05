@@ -14,3 +14,19 @@ Libint2ERI::Libint2ERI              :      3.983u      0.033s      0.097w     35
 Libint2ERI::Libint2ERI              :      3.983u      0.033s      0.097w     35 calls
 
 **************************************************************************************
+
+Host: OptiPlex-Tower-Plus-7020
+
+Timers On : Fri Sep  5 11:43:22 2025
+Timers Off: Fri Sep  5 18:54:17 2025
+
+Wall Time:    25854.72 seconds
+
+                                                       Time (seconds)
+Module                                       User      System        Wall        Calls
+Libint2ERI::Libint2ERI              :      7.617u      0.050s      0.199w     70 calls
+
+--------------------------------------------------------------------------------------
+Libint2ERI::Libint2ERI              :      7.617u      0.050s      0.199w     70 calls
+
+**************************************************************************************

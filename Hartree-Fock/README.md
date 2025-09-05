@@ -13,10 +13,10 @@ An example for the water (H2O) molecule is provided, containing the following fi
 - 2_Plot-RMSProp.ipynb: Read the csv file and plot the energy with respect to the iteration number when the Root Mean Square Propagation method is used.
 - 3_Plot-ADAM.ipynb: Read the csv file and plot the energy with respect to the iteration number when the Adaptive Momentum method is used.
 
-## MethodComparison
+## Comparison of optimization algorithms
 
 This exercise compares the performance of the several optimization algorithms at its best step size.
 
-An example for the boron fluoride (BF3) molecule is provided, containing the following files:
+An example for the boron trifluoride (BF3) molecule is provided, containing the following files:
 - 0_BF3.ipynb: Contain the code to solve Hartree-Fock using Steepest gradient descent, Conjugate Gradients, AdaGrad, RMSProp and ADAM at their best identified step sizes and write the results into csv files.
 - 1_Plot-BF3.ipynb: Read the csv file and plot the energy with respect to the iteration number for all the algorithms.
