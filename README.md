@@ -1,6 +1,6 @@
 # OptimRotEduc
 
-This repo contains the files for teaching Steepest Gradient Descent, Conjugate Gradients, AdaGrad, RMSProp and ADAM in the context of Hartree-Fock and Natural Orbital Theory. The content is intended to be used as a module in a curse of numerical methods for quantum chemistry. 
+This repo contains the files for teaching Steepest Gradient Descent, Conjugate Gradients, AdaGrad, RMSProp and ADAM in the context of Hartree-Fock and Natural Orbital Theory. The content is intended to be used as a module in a course on numerical methods for quantum chemistry. 
 
 ## 💡 Installation
 
@@ -10,7 +10,7 @@ conda install psi4 -c conda-forge
 pip install numpy matplotlib scipy jupyter notebook pynof
 ```
 
-Remember to activate the enviroment for usage each time
+Remember to activate the environment for usage each time
 ```bash
 conda activate pynof
 ```
@@ -25,4 +25,4 @@ Follow with Natural Orbital Functional theory, where you can a) apply the optimi
 
 ## Ackownledgements
 
-The content is based and make use of PyNOF (based on the Donostia Natural Orbital Functional Software) and Psi4NumPy in a Jupyter Notebook enviroment.
+The content is based on and makes use of PyNOF (based on the Donostia Natural Orbital Functional Software) and Psi4NumPy (based on Psi4) in a Jupyter Notebook workspace.
