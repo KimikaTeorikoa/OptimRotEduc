@@ -1,4 +1,4 @@
-# OptimRotEduc
+# OptimRotEduc: Optimization Algorithms for Orbital Rotations in the Self Consistent Field for Education
 
 This repo contains the files for teaching Steepest Gradient Descent, Conjugate Gradients, AdaGrad, RMSProp and ADAM in the context of Hartree-Fock and Natural Orbital Theory. The content is intended to be used as a module in a course on numerical methods for quantum chemistry. 
 
