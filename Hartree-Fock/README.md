@@ -1,8 +1,8 @@
-# Hartree-Fock
+# ⭐ Hartree-Fock
 
 This folder contains the files for solving Hartree-Fock with Steepest Gradient Descent, Conjugate Gradients, AdaGrad, RMSProp and ADAM optimization algorithms.
 
-## Algorithm coding and Step size tunning
+## 🏃 Algorithm coding and Step size tunning
 
 This exercise explore the effect of the step size (alpha) on the different algorithms.
 
@@ -12,7 +12,7 @@ An example for the water (H2O) molecule is provided, containing the following fi
 - **2_Plot-RMSProp.ipynb**: Read the csv file and plot the energy with respect to the iteration number when the Root Mean Square Propagation method is used.
 - **3_Plot-ADAM.ipynb**: Read the csv file and plot the energy with respect to the iteration number when the Adaptive Momentum method is used.
 
-## Comparison of optimization algorithms
+## 🚗 Comparison of optimization algorithms
 
 This exercise compares the performance of the several optimization algorithms at their best step size.
 
