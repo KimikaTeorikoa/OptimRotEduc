@@ -22,3 +22,7 @@ You can find the notebooks divided by folder.
 Start with Hartree-Fock, where you can explore a) the effect of the step size on the different optimization algorithms, and b) compare the convergency of the algorithms at their best step size.
 
 Follow with Natural Orbital Functional theory, where you can a) apply the optimization algorithms in a more complex landscape that includes electron correlation, and b) introduce the concept of a dynamic (scheduled) step size for improving convergency.
+
+## Ackownledgements
+
+The content is based and make use of PyNOF (based on the Donostia Natural Orbital Functional Software) and Psi4NumPy in a Jupyter Notebook enviroment.
