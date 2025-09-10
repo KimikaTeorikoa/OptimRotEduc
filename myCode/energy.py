@@ -10,7 +10,7 @@ def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,
     """Compute Natural Orbital Functional single point energy"""
 
     # TXEMA
-    kk = 0
+    no_energy_change_count = 0
     energy_data = []
     # Txema
     t1 = time()
@@ -146,12 +146,11 @@ def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,
         print("{:6d} {:6d} {:6d}   {:14.8f} {:14.8f} {:15.8f}      {:3.1e}    {:3.1e}   {}   {}".format(i_ext,nit_orb,nit_occ,E,E+E_nuc,E_diff,np.linalg.norm(grad_orb),np.linalg.norm(grad_occ),success_orb,success_occ))
         energy_data.append((i_ext, E + E_nuc))
         #TXE
-        #print('@@ kk', kk, E_diff)
         if educ:
            if abs(E_diff) < 0.00000001 :
-               kk = kk + 1
+               no_energy_change_count = no_energy_change_count + 1
 
-           if kk > 10  :
+           if kno_energy_change_countk > 10  :
               print('')
               print('')
               print('@@@@@@@@@@@ W A R N I N G @@@@@@@@@@@@@@@@@@@')
