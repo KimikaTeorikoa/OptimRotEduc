@@ -5,6 +5,7 @@ This repo contains the files for teaching Steepest Gradient Descent, Conjugate G
 
 ```bash
 conda create -y -n pynof python=3.12
+conda activate pynof
 conda install psi4 -c conda-forge 
 pip install numpy matplotlib scipy jupyter notebook pynof
 ```
