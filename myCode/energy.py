@@ -150,7 +150,7 @@ def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,
            if abs(E_diff) < 0.00000001 :
                no_energy_change_count = no_energy_change_count + 1
 
-           if kno_energy_change_countk > 10  :
+           if no_energy_change_countk > 10  :
               print('')
               print('')
               print('@@@@@@@@@@@ W A R N I N G @@@@@@@@@@@@@@@@@@@')

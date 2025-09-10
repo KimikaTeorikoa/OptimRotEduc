@@ -168,7 +168,7 @@ def orbopt_rotations(gamma,C,H,I,b_mnl,p):
 
 
 def orbopt_adam2(gamma,C,H,I,b_mnl,p):
-'''  IN: 
+    '''  IN: 
           gamma: Occupation Numbers (ONs)
           C: NOs guess
           H: Monoelectronic Integrals
@@ -192,7 +192,7 @@ def orbopt_adam2(gamma,C,H,I,b_mnl,p):
 
 
 def orbopt_adam(gamma,C,H,I,b_mnl,p):
-'''  IN: 
+    '''  IN: 
           gamma: Occupation Numbers (ONs)
           C: NOs guess
           H: Monoelectronic Integrals
@@ -387,7 +387,7 @@ def orbopt_adadelta(gamma, C, H, I, b_mnl, p,):
           success: Truee if convergence reached
     '''
     
-    return best_E, best_C, nit, success
+     return best_E, best_C, nit, success
 
 
 def comb(gamma,C,H,I,b_mnl,p):
