@@ -113,9 +113,9 @@ def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,
         if(p.orb_method=="Rotations"):
             E_orb,C,nit_orb,success_orb = pynof.orbopt_rotations(gamma,C,H,I,b_mnl,p)
         if(p.orb_method=="ADAM"):
-            E_orb,C,nit_orb,success_orb = pynof.orbopt_adam(gamma,C,H,I,b_mnl,p)
+            E_orb,C,nit_orb,success_orb = orbopt_adam(gamma,C,H,I,b_mnl,p)
         if(p.orb_method=="ADAM2"):
-            E_orb,C,nit_orb,success_orb = pynof.orbopt_adam2(gamma,C,H,I,b_mnl,p)
+            E_orb,C,nit_orb,success_orb = orbopt_adam2(gamma,C,H,I,b_mnl,p)
         if(p.orb_method=="SD"):
             E_orb,C,nit_orb,success_orb = orbopt_sd(gamma,C,H,I,b_mnl,p)
         if(p.orb_method=="ADAGRAD"):
