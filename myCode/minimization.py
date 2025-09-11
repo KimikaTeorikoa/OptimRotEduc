@@ -325,53 +325,6 @@ def orbopt_rmsprop(gamma,C,H,I,b_mnl,p):
      return best_E,best_C,nit,success
 
 
-
-     n,dn_dgamma = pynof.ocupacion(gamma,p.no1,p.ndoc,p.nalpha,p.nv,p.nbf5,p.ndns,p.ncwo,p.HighSpin,p.occ_method)
-     cj12,ck12 = pynof.PNOFi_selector(n,p)
-     y = np.zeros((p.nvar))
-     E = pynof.calcorbe(y, n,cj12,ck12,C,H,I,b_mnl,p)
- 
-
-     y = np.zeros((p.nvar))
-     sq_grad_avg = np.zeros((p.nvar))
-     
-     # Good Value: step_size=0.00025
-     step_size=p.alpha
-     #decay
-     rho = 0.999
-
-     improved = False
-     success = False
-     best_E, best_C = E, C
-     nit = 0
-
-     #p.maxloop = 10
-     for i in range(p.maxloop):
-     #for i in range(1000):
-         nit += 1
-         grad = pynof.calcorbg(y*0, n,cj12,ck12,C,H,I,b_mnl,p)
-         
-         if np.linalg.norm(grad) < 10**-4 : #and improved:
-             success = True
-             break
-             
-         # calculate the squared gradient        
-         sg = grad**2.0
-         # update the moving average of the squared gradient
-         sq_grad_avg = (sq_grad_avg * rho) + ((1.0-rho)*sg)
-         alpha = step_size / (1e-6 + np.sqrt(sq_grad_avg))
-         y = - alpha * grad
-         C = pynof.rotate_orbital(y,C,p)
-
-         E = pynof.calcorbe(y*0, n,cj12,ck12,C,H,I,b_mnl,p)
-         #print(i," ",E," ", E < best_E)
-         if E < best_E:
-             best_C = C
-             best_E = E
-             improved = True
-
-     return best_E,best_C,nit,success
-
 def orbopt_adadelta(gamma, C, H, I, b_mnl, p,):
     '''  IN: 
           gamma: Occupation Numbers (ONs)
@@ -387,7 +340,7 @@ def orbopt_adadelta(gamma, C, H, I, b_mnl, p,):
           success: Truee if convergence reached
     '''
     
-     return best_E, best_C, nit, success
+    return best_E, best_C, nit, success
 
 
 def comb(gamma,C,H,I,b_mnl,p):
