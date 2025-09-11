@@ -165,7 +165,6 @@ def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,
         #print(perturb, E, Estored)
         if (success_orb or np.linalg.norm(grad_orb) < 1e-4) and (success_occ or np.linalg.norm(grad_occ) < 1e-4):
             if perturb and abs(E - Estored) < 1e-4:
-                print('@@')
                 y = np.zeros((p.nvar))
                 grad_orb = pynof.calcorbg(y,n,cj12,ck12,C,H,I,b_mnl,p)
                 J_MO,K_MO,H_core = pynof.computeJKH_MO(C,H,I,b_mnl,p)
