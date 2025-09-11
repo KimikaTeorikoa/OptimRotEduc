@@ -355,8 +355,6 @@ def orbopt_rmsprop(gamma,C,H,I,b_mnl,p):
      best_E, best_C = E, C
      nit = 0
      
-     print('@NEW@')
-
      for i in range(p.maxloop):
          nit += 1
 
