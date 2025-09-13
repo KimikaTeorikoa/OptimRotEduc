@@ -125,7 +125,7 @@ def orbopt_cg(gamma,C,H,I,b_mnl,p):
 
 
 
-    return best_E,best_C,nit,success
+     return best_E,best_C,nit,success
 
 def orbopt_adagrad(gamma,C,H,I,b_mnl,p):
      '''  IN: 
@@ -142,7 +142,7 @@ def orbopt_adagrad(gamma,C,H,I,b_mnl,p):
           success: Truee if convergence reached
     '''
 
-    return best_E,best_C,nit,success
+     return best_E,best_C,nit,success
 
 
 def orbopt_rmsprop(gamma,C,H,I,b_mnl,p):
