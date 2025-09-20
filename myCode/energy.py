@@ -5,7 +5,7 @@ import pynof
 import psi4
 from minimization import *
 
-def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,mbpt=False,gradients=False,printmode=True,ekt=False,mulliken_pop=False,lowdin_pop=False,m_diagnostic=False,perturb=False,erpa=False,iter_erpa=0,educ=False):
+def compute_energy(mol,p=None,C=None,n=None,guess="HF",printmode=True,mulliken_pop=False,lowdin_pop=False,m_diagnostic=False,educ=False):
     #TXEMA Added educ
     """Compute Natural Orbital Functional single point energy"""
 
@@ -38,21 +38,10 @@ def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,
     if(C is None):
         if guess=="Core" or guess==None:
             Eguess,C = eigh(H, S)  # (HC = SCe)
-        elif guess=="HFIDr":
-            Eguess,Cguess = eigh(H, S)
-            EHF,C,fmiug0guess = pynof.hfidr(Cguess,H,I,b_mnl,E_nuc,p,printmode)
         else:
             EHF, wfn_HF = psi4.energy(guess, return_wfn=True)
             EHF = EHF - E_nuc
             C = wfn_HF.Ca().np
-    else:
-        guess = None
-        C_old = np.copy(C)
-        for i in range(p.ndoc):
-            for j in range(p.ncwo):
-                k = p.no1 + p.ndns + (p.ndoc - i - 1) * p.ncwo + j
-                l = p.no1 + p.ndns + (p.ndoc - i - 1) + j*p.ndoc
-                C[:,k] = C_old[:,l]
     C = pynof.check_ortho(C,S,p)
 
     # Guess Occupation Numbers (n)
@@ -62,28 +51,12 @@ def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,
         if p.occ_method == "Softmax":
             p.nv = p.nbf5 - p.no1 - p.nsoc 
             gamma = pynof.compute_gammas_softmax(p.ndoc,p.ncwo)
-        if p.occ_method == "EBI":
-            p.nbf5 = p.nbf
-            p.nvar = int(p.nbf*(p.nbf-1)/2)
-            p.nv = p.nbf
-            gamma = pynof.compute_gammas_ebi(p.ndoc,p.nbf)
     else:
-        n_old = np.copy(n)
-        for i in range(p.ndoc):
-            for j in range(p.ncwo):
-                k = p.no1 + p.ndns + (p.ndoc - i - 1) * p.ncwo + j
-                l = p.no1 + p.ndns + (p.ndoc - i - 1) + j*p.ndoc
-                n[k] = n_old[l]
         if p.occ_method == "Trigonometric":
             gamma = pynof.n_to_gammas_trigonometric(n,p.no1,p.ndoc,p.ndns,p.ncwo)
         if p.occ_method == "Softmax":
             p.nv = p.nbf5 - p.no1 - p.nsoc 
             gamma = pynof.n_to_gammas_softmax(n,p.no1,p.ndoc,p.ndns,p.ncwo)
-        if p.occ_method == "EBI":
-            p.nbf5 = p.nbf
-            p.nvar = int(p.nbf*(p.nbf-1)/2)
-            p.nv = p.nbf
-            gamma = pynof.n_to_gammas_ebi(n)
 
     elag = np.zeros((p.nbf,p.nbf))
 
@@ -108,10 +81,6 @@ def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,
         #orboptr
         #t1 = time()
         print('alpha = ', p.alpha)
-        if(p.orb_method=="ID"):
-            E_orb,C,nit_orb,success_orb,itlim,fmiug0 = pynof.orboptr(C,n,H,I,b_mnl,cj12,ck12,i_ext,itlim,fmiug0,p,printmode)
-        if(p.orb_method=="Rotations"):
-            E_orb,C,nit_orb,success_orb = pynof.orbopt_rotations(gamma,C,H,I,b_mnl,p)
         if(p.orb_method=="ADAM"):
             E_orb,C,nit_orb,success_orb = orbopt_adam(gamma,C,H,I,b_mnl,p)
         if(p.orb_method=="ADAM2"):
@@ -139,10 +108,13 @@ def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,
         E_diff = E-E_old
         E_old = E
 
+        # Orbital Gradient
         y = np.zeros((p.nvar))
         grad_orb = pynof.calcorbg(y,n,cj12,ck12,C,H,I,b_mnl,p)
+        # Occupation Gradient
         J_MO,K_MO,H_core = pynof.computeJKH_MO(C,H,I,b_mnl,p)
         grad_occ = pynof.calcoccg(gamma,J_MO,K_MO,H_core,p)
+        
         print("{:6d} {:6d} {:6d}   {:14.8f} {:14.8f} {:15.8f}      {:3.1e}    {:3.1e}   {}   {}".format(i_ext,nit_orb,nit_occ,E,E+E_nuc,E_diff,np.linalg.norm(grad_orb),np.linalg.norm(grad_occ),success_orb,success_occ))
         energy_data.append((i_ext, E + E_nuc))
         #TXE
@@ -164,23 +136,8 @@ def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,
         # Txema  incread convergence coherence with ADAM function
         #print(perturb, E, Estored)
         if (success_orb or np.linalg.norm(grad_orb) < 1e-4) and (success_occ or np.linalg.norm(grad_occ) < 1e-4):
-            if perturb and abs(E - Estored) < 1e-4:
-                y = np.zeros((p.nvar))
-                grad_orb = pynof.calcorbg(y,n,cj12,ck12,C,H,I,b_mnl,p)
-                J_MO,K_MO,H_core = pynof.computeJKH_MO(C,H,I,b_mnl,p)
-                grad_occ = pynof.calcoccg(gamma,J_MO,K_MO,H_core,p)
-                print("Increasing Gradient")
-                last_iter = i_ext
-                Estored,Cstored,gammastored = E,C.copy(),gamma.copy()
-                C,gamma = pynof.perturb_solution(C,gamma,grad_orb,grad_occ,p)
-            else:
-                print("Solution does not improve anymore")
-                if(Estored<E):
-                    E,C,gamma = Estored,Cstored,gammastored
-                break
-
-    if(p.orb_method=="ID"):
-        np.save(p.title+"_fmiug0.npy",fmiug0)
+            print("--------Converged--------")
+            break
     
     n,dR = pynof.ocupacion(gamma,p.no1,p.ndoc,p.nalpha,p.nv,p.nbf5,p.ndns,p.ncwo,p.HighSpin,p.occ_method)
     cj12,ck12 = pynof.PNOFi_selector(n,p)
@@ -189,15 +146,6 @@ def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,
 
     if(p.ipnof>4):
         C,n,elag = pynof.order_subspaces(C,n,elag,H,I,b_mnl,p)
-
-    C_old = np.copy(C)
-    n_old = np.copy(n)
-    for i in range(p.ndoc):
-        for j in range(p.ncwo):
-            k = p.no1 + p.ndns + (p.ndoc - i - 1) * p.ncwo + j
-            l = p.no1 + p.ndns + (p.ndoc - i - 1) + j*p.ndoc
-            C[:,l] = C_old[:,k]
-            n[l] = n_old[k]
 
     np.save(p.title+"_C.npy",C)
     np.save(p.title+"_n.npy",n)
@@ -225,10 +173,10 @@ def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,
         print(" Final Energies ")
         print("----------------")
         
-        if(guess=="HF" or guess=="HFIDr"):
+        if(guess=="HF"):
             print("       HF Total Energy = {:15.7f}".format(E_nuc + EHF))
         print("Final NOF Total Energy = {:15.7f}".format(E_nuc + E))
-        if(guess=="HF" or guess=="HFIDr"):
+        if(guess=="HF"):
             print("    Correlation Energy = {:15.7f}".format(E-EHF))
         print("")
         print("")
@@ -247,15 +195,6 @@ def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,
         return p.alpha, energy_data
     #TXEMA
 
-    if(nofmp2):
-        pynof.nofmp2(n,C,H,I,b_mnl,E_nuc,p)
-
-    if(mbpt):
-        pynof.mbpt(n,C,H,I,b_mnl,Dipole,E_nuc,E,p)
-
-    if(ekt):
-        pynof.ext_koopmans(p,elag,n)
-
     if(mulliken_pop):
         pynof.mulliken_pop(p,wfn,n,C,S)
 
@@ -264,50 +203,6 @@ def compute_energy(mol,p=None,C=None,n=None,fmiug0=None,guess="HF",nofmp2=False,
 
     if(m_diagnostic):
         pynof.M_diagnostic(p,n)
-
-    if(erpa):
-        pynof.ERPA(wfn,mol,n,C,H,I,b_mnl,cj12,ck12,elag,p)
-
-    if(iter_erpa > 0):
-        pynof.iterative_ERPA0(wfn,mol,n,C,H,I,b_mnl,cj12,ck12,elag,iter_erpa,p)
-
-    if gradients:
-        grad = pynof.compute_geom_gradients(wfn,mol,n,C,cj12,ck12,elag,p)
-        return E_t,C,n,fmiug0,grad.flatten()
-    else:
-        return E_t,C,n,fmiug0
-
-
-def brute_force_energy(mol,p,intents=5,C=None,gamma=None,fmiug0=None,hfidr=True,RI_last=False,gpu_last=False,ekt=False,mulliken_pop=False,lowdin_pop=False,m_diagnostic=False):
-    t1 = time()
-    
-    E,C,gamma,fmiug0 = compute_energy(mol,p,C,gamma,fmiug0,hfidr)
-    E_min = E
-    C_min = C
-    gamma_min = gamma
-    fmiug0_min = fmiug0
-    
-    for i in range(intents):
-        p.autozeros()
-        E,C,gamma,fmiug0 = compute_energy(mol,p,C,gamma,None,hfidr=False,nofmp2=False)
-        if(E<E_min):
-            E_min = E
-            C_min = C
-            gamma_min = gamma
-            fmiug0_min = fmiug0
-    
-    p.RI = RI_last
-    p.gpu = gpu_last
-    p.jit = True
-    E,C,gamma,fmiug0 = compute_energy(mol,p,C_min,gamma_min,fmiug0_min,hfidr=False,nofmp2=False,ekt=ekt,mulliken_pop=mulliken_pop,lowdin_pop=lowdin_pop,m_diagnostic=m_diagnostic)
-    
-    t2 = time()
-    
-    print("Best Total NOF Energy {}".format(E))
-    print("Elapsed Time: {:10.2f} (Seconds)".format(t2-t1))
-   
-    return E,C,gamma,fmiug0
-    
 
 def calc_hf_orbrot(mol,p):
 
@@ -321,8 +216,8 @@ def calc_hf_orbrot(mol,p):
     return alpha, energy_data  
 
 def calc_nof_orbrot(mol,p):
+    
     p.occ_method = "Softmax"
     
     alpha, energy_data = compute_energy(mol,p,C=None,guess="Core",educ=True)
-    return alpha, energy_data  
-
+    return alpha, energy_data
