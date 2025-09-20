@@ -74,7 +74,7 @@ def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ
             )
         else:
             print(
-                "PNOF{p.ipnof} Calculation ({p.orb_method}/{p.occ_method} Optimization)"
+                f"PNOF{p.ipnof} Calculation ({p.orb_method}/{p.occ_method} Optimization)"
             )
         print("==================")
         print("")
