@@ -235,6 +235,7 @@ def calc_hf_orbrot(mol, p):
 
 
 def calc_nof_orbrot(mol, p):
+    p.nof = None
     p.occ_method = "Softmax"
 
     alpha, energy_data = compute_energy(mol, p, C=None, guess="Core", educ=True)
