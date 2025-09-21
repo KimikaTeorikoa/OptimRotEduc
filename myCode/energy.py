@@ -92,7 +92,6 @@ def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ
         )
     for i_ext in range(p.maxit):
         # orboptr
-        # t1 = time()
         print("alpha = ", p.alpha)
         if p.orb_method == "ADAM":
             E_orb, C, nit_orb, success_orb = orbopt_adam(gamma, C, H, I, b_mnl, p)
@@ -108,14 +107,11 @@ def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ
             E_orb, C, nit_orb, success_orb = orbopt_adadelta(gamma, C, H, I, b_mnl, p)
         if p.orb_method == "CG":
             E_orb, C, nit_orb, success_orb = orbopt_cg(gamma, C, H, I, b_mnl, p)
-        # t2 = time()
 
         # occopt
         E_occ, nit_occ, success_occ, gamma, n, cj12, ck12 = pynof.occoptr(
             gamma, C, H, I, b_mnl, p
         )
-        # t3 = time()
-        # print("t_orb: {:3.1e} t_occ: {:3.1e}".format(t2-t1,t3-t2))
         if p.occ_method == "Softmax":
             C, gamma = pynof.order_occupations_softmax(C, gamma, H, I, b_mnl, p)
 
@@ -136,7 +132,7 @@ def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ
         energy_data.append((i_ext, E + E_nuc))
         # TXE
         if educ:
-            if abs(E_diff) < 0.00000001:
+            if abs(E_diff) < 1e-8:
                 no_energy_change_count = no_energy_change_count + 1
 
             if no_energy_change_count > 4:
@@ -176,8 +172,7 @@ def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ
     E, elag, sumdiff, maxdiff = pynof.ENERGY1r(C, n, H, I, b_mnl, cj12, ck12, p)
     print(f"\nLagrage sumdiff {sumdiff:3.1e} maxfdiff {maxdiff:3.1e}")
 
-    if p.ipnof > 4:
-        C, n, elag = pynof.order_subspaces(C, n, elag, H, I, b_mnl, p)
+    C, n, elag = pynof.order_subspaces(C, n, elag, H, I, b_mnl, p)
 
     np.save(p.title + "_C.npy", C)
     np.save(p.title + "_n.npy", n)
@@ -223,7 +218,6 @@ def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ
     # TXEMA
     print(educ)
     if educ == True:
-        Etot = E_nuc + E
         return p.alpha, energy_data
     # TXEMA
 
