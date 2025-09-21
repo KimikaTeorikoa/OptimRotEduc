@@ -68,7 +68,7 @@ def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ
 
     if printmode:
         print("")
-        if p.ipnof == 9:
+        if p.nof == "HF":
             print(
                 f"HF with Orbrot Calculation ({p.orb_method}/{p.occ_method} Optimization)"
             )
@@ -232,8 +232,8 @@ def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ
 
 def calc_hf_orbrot(mol, p):
 
+    p.nof = "HF"
     p.freeze_occ = True
-
     n = np.zeros(p.nbf5)
     n[0 : p.ndoc] = 1
 
