@@ -19,7 +19,9 @@ conda activate pynof
 
 ## 📝 Usage
 
-The file myCode/minimization.py contains a function called *orbopt_sd*, which can be used for doing orbital optimization with the steepest gradient descent algorithm. In the notebooks you will be requested to complete the other functions and explore their use in Hartree-Fock and Natural Orbital Functional (NOF) theory. The content is organized in folders:
+The file myCode/minimization.py contains a function called *orbopt_sd*, which can be used for doing orbital optimization with the steepest gradient descent algorithm.
+
+In the notebooks, you will be requested to complete the other functions and explore their use in Hartree-Fock and Natural Orbital Functional (NOF) theory. The content is organized in folders:
 
 - Start with Hartree-Fock, where you will a) code the optimization algorithms and explore the effect of the step size and b) compare the convergency of the algorithms at their best step size.
 
