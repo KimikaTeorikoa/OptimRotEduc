@@ -7,7 +7,7 @@ This folder contains the files for solving Hartree-Fock with Steepest Gradient D
 This exercise explore the effect of the step size (alpha) on the different algorithms.
 
 An example for the water (H2O) molecule is provided, containing the following files:
-- **0_Opt-Algorithm-Coding.ipynb**: This first notebook present an example for doing Hartree-Fock using steepest descent. The task is to use this example to complete the code in myCode/minimization.py for the other algorithms: Conjugate Gradients, AdaGrad, RMSProp and ADAM.
+- **0_Test_Case-Coding.ipynb**: This first notebook present an example for doing Hartree-Fock using steepest descent. The task is to use this example to complete the code in myCode/minimization.py for the other algorithms: Conjugate Gradients, AdaGrad, RMSProp and ADAM.
 - **1_Opt-Step-Size.ipynb**: Contains the code to solve Hartree-Fock using Steepest Gradient Descent, Conjugate Gradients, AdaGrad, RMSProp and ADAM with several step sizes (learning rates) and write the results into csv files.
 - **2_Plot.ipynb**: Read the csv file and plot the energy with respect to the iteration number for a given method.
 
