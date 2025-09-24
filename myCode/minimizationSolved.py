@@ -66,7 +66,10 @@ def orbopt_sd(gamma,C,H,I,b_mnl,p):
 
 
 def orbopt_adam2(gamma,C,H,I,b_mnl,p):
-    '''  IN: 
+    
+    '''
+        Adam modified changing alpha when no convergence
+        IN: 
           gamma: Occupation Numbers (ONs)
           C: NOs guess
           H: Monoelectronic Integrals
@@ -208,7 +211,7 @@ def orbopt_cg(gamma,C,H,I,b_mnl,p):
           success: Truee if convergence reached
     '''
      
-     print("Starting SD ... with alpha",p.alpha)
+     print("Starting CG ... with alpha",p.alpha)
      ### We calculate the occupations numbers of the Orbitals
      n,dn_dgamma = pynof.ocupacion(gamma,p.no1,p.ndoc,p.nalpha,p.nv,p.nbf5,p.ndns,p.ncwo,p.HighSpin,p.occ_method)
      ## NOF Coefficients, realted with the selected functional
