@@ -12,7 +12,7 @@ conda install psi4 -c conda-forge
 pip install numpy matplotlib scipy jupyter notebook pynof
 ```
 
-Remember to activate the environment every time you work on the notebooks:
+Remember to activate the environment every time you work on these notebooks:
 ```bash
 conda activate pynof
 ```
@@ -23,9 +23,9 @@ The file myCode/minimization.py contains a function called *orbopt_sd*, which ca
 
 In the notebooks, you will be requested to complete the other functions and explore their use in Hartree-Fock and Natural Orbital Functional (NOF) theory. The content is organized in folders:
 
-- Start with Hartree-Fock, where you will a) code the optimization algorithms and explore the effect of the step size and b) compare the convergency of the algorithms at their best step size.
+- Start with Hartree-Fock (HF folder), where you will a) code the optimization algorithms and explore the effect of the step size and b) compare the convergency of the algorithms at their best step size.
 
-- Follow with Natural Orbital Functional theory, where you can a) apply the optimization algorithms in a more complex landscape that includes electron correlation, and b) introduce the concept of a dynamic (scheduled) step size for improving convergency.
+- Follow with Natural Orbital Functional (NOF folder) theory, where you can a) apply the optimization algorithms in a more complex landscape that includes electron correlation, and b) introduce the concept of a dynamic (scheduled) step size for improving convergency.
 
 ## Ackownledgements
 
