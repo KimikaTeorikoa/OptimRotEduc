@@ -22,6 +22,6 @@ This exercise compares the performance of the several optimization algorithms at
 
 An example for the boron trifluoride (BF3) molecule is provided, containing the following files:
 - **0_HF-Opt-Algorithm-Best-Step-Size.ipynb**: Contains the code to solve Hartree-Fock using Steepest Gradient Descent, Conjugate Gradients, AdaGrad, RMSProp and ADAM at their best identified step sizes and write the results into csv files.
-- **1-Plot.ipynb**: Read the csv file and plot the energy with respect to the iteration number for all the algorithms.
+- **1_Plot.ipynb**: Read the csv file and plot the energy with respect to the iteration number for all the algorithms.
 
 Once the BF3 example run, one can substitute BF3 by other molecules, and run the notebook. In **1-_lot** notebook, in order to adjust the axis accordingly to the selected molecule, the corresponding code must be comented/uncommented for the selected molecule.
