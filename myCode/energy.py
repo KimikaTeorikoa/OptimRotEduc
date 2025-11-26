@@ -135,7 +135,7 @@ def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ
             if abs(E_diff) < 1e-8:
                 no_energy_change_count = no_energy_change_count + 1
 
-            if no_energy_change_count > 4:
+            if no_energy_change_count > 2:
                 print("")
                 print("")
                 print("@@@@@@@@@@@ W A R N I N G @@@@@@@@@@@@@@@@@@@")
