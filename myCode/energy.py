@@ -3,7 +3,7 @@ from scipy.linalg import eigh
 from time import time
 import pynof
 import psi4
-from minimization import *
+from minimizationSolved import *
 
 def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ=False):
     # TXEMA Added educ
@@ -202,7 +202,7 @@ def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ
 
         if guess == "HF":
             print(f"       HF Total Energy = {E_nuc + EHF:15.7f}")
-        print("Final NOF Total Energy = {E_nuc + E:15.7f}")
+        print(f"Final NOF Total Energy = {E_nuc + E:15.7f}")
         if guess == "HF":
             print(f"    Correlation Energy = {E - EHF:15.7f}")
         print("")
