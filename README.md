@@ -3,7 +3,7 @@ This repo contains the files for teaching Steepest Gradient Descent, Conjugate G
 
 ## 💡 Installation
 
-You need to have ![(mini/ana)conda](https://www.anaconda.com/) installed. The rest of the required packages can be installed in an environment by executing the following lines in the command line:
+You need to have [(mini/ana)conda](https://www.anaconda.com/) installed. The rest of the required packages can be installed in an environment by executing the following lines in the command line:
 
 ```bash
 # Clone the repo to get the notebooks and the code that must be modified
@@ -33,7 +33,7 @@ Once implemented, students can explore their perfomrance in Hartree-Fock and Nat
 
 ## Ackownledgements
 
-The content is based on and makes use of ![PyNOF](https://github.com/felipelewyee/PyNOF) (based on the Donostia Natural Orbital Functional Software, ![DoNOF](https://github.com/DoNOF/DoNOFsw)) and ![Psi4NumPy](https://github.com/psi4/psi4numpy) (based on ![Psi4](https://github.com/psi4/psi4)) in a Jupyter Notebook workspace.
+The content is based on and makes use of [PyNOF](https://github.com/felipelewyee/PyNOF) (based on the Donostia Natural Orbital Functional Software, [DoNOF](https://github.com/DoNOF/DoNOFsw)) and [Psi4NumPy](https://github.com/psi4/psi4numpy) (based on [Psi4](https://github.com/psi4/psi4)) in a Jupyter Notebook workspace.
 
 ## About
 
