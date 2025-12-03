@@ -3,7 +3,7 @@ This repo contains the files for teaching Steepest Gradient Descent, Conjugate G
 
 ## 💡 Installation
 
-You need to have ![anaconda](https://www.anaconda.com/) installed. The rest of the required packages can be installed in an environment by executing the following lines in the command line:
+You need to have ![(mini/ana)conda](https://www.anaconda.com/) installed. The rest of the required packages can be installed in an environment by executing the following lines in the command line:
 
 ```bash
 # Clone the repo to get the notebooks and the code that must be modified
@@ -22,11 +22,12 @@ conda activate pynof
 
 ## 📝 Usage
 
-The file myCode/minimization.py contains a function called *orbopt_sd*, which can be used for doing orbital optimization with the steepest gradient descent algorithm.
+The file myCode/minimization.py contains a function called *orbopt_sd*, which can be used for doing orbital optimization with the steepest gradient descent algorithm. Students may use this algorithm as a model to code other gradient based minimization algorithms  (*orbopt_cg*, *orbopt_rmsprop*, *orbopt_adagrad*, and *orbopt_adam*) **required** to run the notebooks.
 
-In the notebooks, you will be requested to complete the other optimization algorithms as functions, (*orbopt_cg*, *orbopt_rmsprop*, *orbopt_adagrad*, and *orbopt_adam*) and explore their perfomrance in Hartree-Fock and Natural Orbital Functional (NOF) theory. The content is organized in folders:
+Once implemented, students can explore their perfomrance in Hartree-Fock and Natural Orbital Functional (NOF) theory. The content is organized in folders:
 
-- Start with Hartree-Fock (HF folder), where you will a) code the optimization algorithms and explore the effect of the step size and b) compare the convergency of the algorithms at their best step size.
+- Start with Hartree-Fock (HF folder), where you will a) code the optimization algorithms (in  
+``` bash myCode/minimization.py ``` file) and explore the effect of the step size and b) compare the convergency of the algorithms at their best step size.
 
 - Follow with Natural Orbital Functional (NOF folder) theory, where you can a) apply the optimization algorithms in a more complex landscape that includes electron correlation, and b) introduce the concept of a dynamic (scheduled) step size for improving convergency.
 
