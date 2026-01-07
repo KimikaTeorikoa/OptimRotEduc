@@ -10,16 +10,13 @@ You need to have [(mini/ana)conda](https://www.anaconda.com/) installed. The res
 conda create -y -n pynof python=3.13
 # Once created the environment we load it and install the required software
 conda activate pynof
+
 conda install psi4 -c conda-forge 
 pip install numpy matplotlib scipy jupyter notebook pynof
 
 # Clone the repo to get the notebooks and the code that must be modified
 git clone https://github.com/felipelewyee/OptimRotEduc
-```
-Remember to activate the environment every time you work on these notebooks:
-```bash
-conda activate pynof
-```
+
 
 ## 📝 Usage
 
