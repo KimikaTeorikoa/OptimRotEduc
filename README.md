@@ -6,14 +6,15 @@ This repo contains the files for teaching Steepest Gradient Descent, Conjugate G
 You need to have [(mini/ana)conda](https://www.anaconda.com/) installed. The rest of the required packages can be installed in an environment by executing the following lines in the command line:
 
 ```bash
-# Clone the repo to get the notebooks and the code that must be modified
-git clone https://github.com/felipelewyee/OptimRotEduc
 # Created a conda environment. Here we name it pynof.
-cconda create -y -n pynof python=3.13
+conda create -y -n pynof python=3.13
 # Once created the environment we load it and install the required software
 conda activate pynof
 conda install psi4 -c conda-forge 
 pip install numpy matplotlib scipy jupyter notebook pynof
+
+# Clone the repo to get the notebooks and the code that must be modified
+git clone https://github.com/felipelewyee/OptimRotEduc
 ```
 Remember to activate the environment every time you work on these notebooks:
 ```bash
