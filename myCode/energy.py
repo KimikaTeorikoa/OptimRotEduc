@@ -3,7 +3,7 @@ from scipy.linalg import eigh
 from time import time
 import pynof
 import psi4
-from minimizationSolved import *
+from minimization import *
 
 def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ=False):
     """
