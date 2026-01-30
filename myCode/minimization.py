@@ -1,3 +1,21 @@
+"""
+minimizationSolved.py
+
+This file provides a complete reference implementation of the optimization
+algorithms used in the instructional module (e.g., SD, CG, RMSProp, Adam),
+adapted to the PyNOF framework.
+
+It is intended for instructors and reviewers, allowing the accompanying
+Jupyter notebooks to be executed without requiring students to implement the
+algorithms themselves. During the activity, students are expected to work
+exclusively with the file `minimization.py`, where they implement and test
+optimization algorithms starting from a reference steepest descent
+implementation.
+
+This file is not imported or modified during the student workflow and is
+included solely for reference, validation, and review purposes.
+"""
+
 import numpy as np
 from scipy.optimize import minimize
 from time import time

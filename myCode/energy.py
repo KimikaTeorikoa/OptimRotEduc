@@ -3,9 +3,61 @@ from scipy.linalg import eigh
 from time import time
 import pynof
 import psi4
-from minimization import *
+from minimizationSolved import *
 
 def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ=False):
+    """
+    Compute the electronic energy using HF or NOF orbital rotations.
+
+    This function evaluates the total electronic energy associated with a given
+    set of molecular orbitals. When used in educational mode (educ=True), it
+    also returns auxiliary information that is useful for analyzing convergence
+    behavior during optimization.
+
+    Parameters
+    ----------
+    mol : object
+        Molecular object containing geometry and basis-set information.
+    p : object
+        Container for method-specific parameters (HF or NOF), including
+        occupation numbers and optimization settings.
+    C : numpy.ndarray, optional
+        Molecular orbital coefficient matrix. If not provided, it is constructed
+        internally.
+    n : numpy.ndarray, optional
+        Occupation numbers associated with the molecular orbitals. If None,
+        an initial occupation pattern is constructed internally.
+    guess : str, optional
+        Initial guess for the molecular orbitals. Accepted values include
+        "HF" (Hartree--Fock guess obtained with Psi4) and "Core" (diagonalization
+        of the core Hamiltonian). Default is "HF".
+    printmode : bool, optional
+        If True, detailed information about the calculation and the optimization
+        progress is printed to standard output. Default is True.
+    educ : bool, optional
+        If True, the function returns additional data intended for educational
+        analysis (e.g., learning-rate values and energy history). Default is
+        False.
+
+    Returns
+    -------
+    energy : float
+        Total electronic energy (including nuclear repulsion).
+    alpha : float or None
+        Learning rate used in the orbital optimization when `educ=True`;
+        otherwise None.
+    energy_history : list of tuple or None
+        List of (iteration, total energy) pairs collected during the
+        optimization when `educ=True`; otherwise None.
+
+    Notes
+    -----
+    The function always returns the same data structure for all code paths.
+    When `educ=False`, the additional educational outputs are returned as None.
+    This design choice ensures a consistent and reusable API for both research
+    and teaching purposes.
+    """
+
     # TXEMA Added educ
     """Compute Natural Orbital Functional single point energy"""
 
@@ -217,12 +269,42 @@ def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ
 
     # TXEMA
     print(educ)
-    if educ == True:
-        return p.alpha, energy_data
-    # TXEMA
+    if educ:
+        alpha_out = p.alpha
+        energy_data_out = energy_data
+    else:
+        alpha_out = None
+        energy_data_out = None
+
+    return E_t, alpha_out, energy_data_out
+    
 
 
 def calc_hf_orbrot(mol, p):
+    """
+    Compute the Hartree--Fock energy using orbital rotations.
+
+    This function evaluates the Hartree--Fock energy by explicitly optimizing
+    the energy with respect to orbital rotation parameters, rather than using
+    a conventional SCF/DIIS procedure. This formulation is adopted to provide
+    a controlled and transparent optimization landscape for instructional
+    purposes.
+
+    Parameters
+    ----------
+    mol : object
+        Molecular object containing geometry and basis-set information.
+    p : object
+        Hartree--Fock parameter container,  including optimization algorithm and
+        learning-rate settings.
+
+    Returns
+    -------
+    alpha : float
+        Learning rate used in the orbital optimization.
+    energy_history : list of tuple
+        List of (iteration, total energy) pairs collected during the optimization.
+    """
 
     p.nof = "HF"
     p.freeze_occ = True
@@ -230,13 +312,36 @@ def calc_hf_orbrot(mol, p):
     n[0 : p.ndoc] = 1
 
     #    pynof.compute_energy(mol,p,C=None,n=n,guess="Core",educ=True)
-    alpha, energy_data = compute_energy(mol, p, C=None, n=n, guess="Core", educ=True)
+    _, alpha, energy_data = compute_energy(mol, p, C=None, n=n, guess="Core", educ=True)
     return alpha, energy_data
 
 
 def calc_nof_orbrot(mol, p):
+    """
+    Compute the NOF energy using orbital rotations.
+
+    This function evaluates the total energy within a Natural Orbital Functional
+    (NOF) framework, optimizing both orbital rotations and fractional occupation
+    numbers. The formulation highlights the impact of electron correlation on
+    the optimization landscape.
+
+    Parameters
+    ----------
+    mol : object
+        Molecular object containing geometry and basis-set information.
+    p : object
+        NOF parameter container, including occupation numbers, optimization
+        algorithm, and learning-rate settings.
+
+    Returns
+    -------
+    alpha : float
+        Learning rate used in the orbital optimization.
+    energy_history : list of tuple
+        List of (iteration, total energy) pairs collected during the optimization.
+    """
     p.nof = None
     p.occ_method = "Softmax"
 
-    alpha, energy_data = compute_energy(mol, p, C=None, guess="Core", educ=True)
+    _, alpha, energy_data = compute_energy(mol, p, C=None, guess="Core", educ=True)
     return alpha, energy_data
