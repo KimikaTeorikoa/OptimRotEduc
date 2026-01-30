@@ -24,8 +24,7 @@ The file myCode/minimization.py contains a function called *orbopt_sd*, which ca
 
 Once implemented, students can explore their perfomrance in Hartree-Fock and Natural Orbital Functional (NOF) theory. The content is organized in folders:
 
-- Start with Hartree-Fock (HF folder), where you will a) code the optimization algorithms (in  
-``` bash myCode/minimization.py ``` file) and explore the effect of the step size and b) compare the convergency of the algorithms at their best step size.
+- Start with Hartree-Fock (HF folder), where you will a) code the optimization algorithms (in  myCode/minimization.py  file) and explore the effect of the step size and b) compare the convergency of the algorithms at their best step size.
 
 - Follow with Natural Orbital Functional (NOF folder) theory, where you can a) apply the optimization algorithms in a more complex landscape that includes electron correlation, and b) introduce the concept of a dynamic (scheduled) step size for improving convergency.
 
