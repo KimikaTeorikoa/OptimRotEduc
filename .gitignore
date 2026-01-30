@@ -2,3 +2,4 @@ __pycache__/
 *pynof*.npy
 *pynof*.fchk
 *timer.dat
+.DS_Store
