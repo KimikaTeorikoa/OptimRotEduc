@@ -34,7 +34,7 @@ def orbopt_sd(gamma,C,H,I,b_mnl,p):
           best_E: Lowest Energy
           best_C: Optimized NOs 
           nit: number of iterations
-          success: Truee if convergence reached
+          success: True if convergence reached
     '''
      
      print("Starting SD ... with alpha",p.alpha)
@@ -98,7 +98,7 @@ def orbopt_adam2(gamma,C,H,I,b_mnl,p):
           best_E: Lowest Energy
           best_C: Optimized NOs 
           nit: number of iterations
-          success: Truee if convergence reached
+          success: True if convergence reached
     '''
 
     n,dn_dgamma = pynof.ocupacion(gamma,p.no1,p.ndoc,p.nalpha,p.nv,p.nbf5,p.ndns,p.ncwo,p.HighSpin,p.occ_method)
@@ -165,7 +165,7 @@ def orbopt_adam(gamma,C,H,I,b_mnl,p):
           best_E: Lowest Energy
           best_C: Optimized NOs 
           nit: number of iterations
-          success: Truee if convergence reached
+          success: True if convergence reached
     '''
     n,dn_dgamma = pynof.ocupacion(gamma,p.no1,p.ndoc,p.nalpha,p.nv,p.nbf5,p.ndns,p.ncwo,p.HighSpin,p.occ_method)
     cj12,ck12 = pynof.PNOFi_selector(n,p)
@@ -226,7 +226,7 @@ def orbopt_cg(gamma,C,H,I,b_mnl,p):
           best_E: Lowest Energy
           best_C: Optimized NOs 
           nit: number of iterations
-          success: Truee if convergence reached
+          success: True if convergence reached
     '''
      
      print("Starting CG ... with alpha",p.alpha)
@@ -294,7 +294,7 @@ def orbopt_adagrad(gamma,C,H,I,b_mnl,p):
           best_E: Lowest Energy
           best_C: Optimized NOs 
           nit: number of iterations
-          success: Truee if convergence reached
+          success: True if convergence reached
     '''
 
      n,dn_dgamma = pynof.ocupacion(gamma,p.no1,p.ndoc,p.nalpha,p.nv,p.nbf5,p.ndns,p.ncwo,p.HighSpin,p.occ_method)
@@ -351,7 +351,7 @@ def orbopt_rmsprop(gamma,C,H,I,b_mnl,p):
           best_E: Lowest Energy
           best_C: Optimized NOs 
           nit: number of iterations
-          success: Truee if convergence reached
+          success: True if convergence reached
     '''
 
      n,dn_dgamma = pynof.ocupacion(gamma,p.no1,p.ndoc,p.nalpha,p.nv,p.nbf5,p.ndns,p.ncwo,p.HighSpin,p.occ_method)
@@ -421,7 +421,7 @@ def orbopt_adadelta(gamma, C, H, I, b_mnl, p,):
           best_E: Lowest Energy
           best_C: Optimized NOs 
           nit: number of iterations
-          success: Truee if convergence reached
+          success: True if convergence reached
     '''
     
     ### We calculate the occupations numbers of the Orbitals
