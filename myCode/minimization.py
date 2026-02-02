@@ -26,7 +26,7 @@ def orbopt_sd(gamma,C,H,I,b_mnl,p):
           best_E: Lowest Energy
           best_C: Optimized NOs 
           nit: number of iterations
-          success: Truee if convergence reached
+          success: True if convergence reached
     '''
      
      print("Starting SD ... with alpha",p.alpha)
@@ -87,7 +87,7 @@ def orbopt_adam2(gamma,C,H,I,b_mnl,p):
           best_E: Lowest Energy
           best_C: Optimized NOs 
           nit: number of iterations
-          success: Truee if convergence reached
+          success: True if convergence reached
     '''
     
     
@@ -111,7 +111,7 @@ def orbopt_adam(gamma,C,H,I,b_mnl,p):
           best_E: Lowest Energy
           best_C: Optimized NOs 
           nit: number of iterations
-          success: Truee if convergence reached
+          success: True if convergence reached
     '''
     
 
@@ -131,7 +131,7 @@ def orbopt_cg(gamma,C,H,I,b_mnl,p):
           best_E: Lowest Energy
           best_C: Optimized NOs 
           nit: number of iterations
-          success: Truee if convergence reached
+          success: True if convergence reached
     '''
 
 
@@ -150,7 +150,7 @@ def orbopt_adagrad(gamma,C,H,I,b_mnl,p):
           best_E: Lowest Energy
           best_C: Optimized NOs 
           nit: number of iterations
-          success: Truee if convergence reached
+          success: True if convergence reached
     '''
 
      return best_E,best_C,nit,success
@@ -168,7 +168,7 @@ def orbopt_rmsprop(gamma,C,H,I,b_mnl,p):
           best_E: Lowest Energy
           best_C: Optimized NOs 
           nit: number of iterations
-          success: Truee if convergence reached
+          success: True if convergence reached
     '''
    
 
@@ -187,7 +187,7 @@ def orbopt_adadelta(gamma, C, H, I, b_mnl, p,):
           best_E: Lowest Energy
           best_C: Optimized NOs 
           nit: number of iterations
-          success: Truee if convergence reached
+          success: True if convergence reached
     '''
     
     return best_E, best_C, nit, success
