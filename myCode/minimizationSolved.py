@@ -24,7 +24,7 @@ import pynof
 
 def orbopt_sd(gamma,C,H,I,b_mnl,p):
      '''  IN: 
-          gamma: (Parameterized) Occupation Numbers (ONs)
+          gamma: (Parametrized) Occupation Numbers (ONs)
           C: NOs guess
           H: Monoelectronic Integrals
           I: Bielectronic Integrals
@@ -88,7 +88,7 @@ def orbopt_adam2(gamma,C,H,I,b_mnl,p):
     '''
         Adam modified changing alpha when no convergence
         IN: 
-          gamma: (Parameterized) Occupation Numbers (ONs)
+          gamma: (Parametrized) Occupation Numbers (ONs)
           C: NOs guess
           H: Monoelectronic Integrals
           I: Bielectronic Integrals
@@ -155,7 +155,7 @@ def orbopt_adam2(gamma,C,H,I,b_mnl,p):
 
 def orbopt_adam(gamma,C,H,I,b_mnl,p):
     '''  IN: 
-          gamma: (Parameterized) Occupation Numbers (ONs)
+          gamma: (Parametrized) Occupation Numbers (ONs)
           C: NOs guess
           H: Monoelectronic Integrals
           I: Bielectronic Integrals
@@ -216,7 +216,7 @@ def orbopt_adam(gamma,C,H,I,b_mnl,p):
 
 def orbopt_cg(gamma,C,H,I,b_mnl,p):
      '''  IN: 
-          gamma: (Parameterized) Occupation Numbers (ONs)
+          gamma: (Parametrized) Occupation Numbers (ONs)
           C: NOs guess
           H: Monoelectronic Integrals
           I: Bielectronic Integrals
@@ -284,7 +284,7 @@ def orbopt_cg(gamma,C,H,I,b_mnl,p):
 
 def orbopt_adagrad(gamma,C,H,I,b_mnl,p):
      '''  IN: 
-          gamma: (Parameterized) Occupation Numbers (ONs)
+          gamma: (Parametrized) Occupation Numbers (ONs)
           C: NOs guess
           H: Monoelectronic Integrals
           I: Bielectronic Integrals
@@ -341,7 +341,7 @@ def orbopt_adagrad(gamma,C,H,I,b_mnl,p):
 
 def orbopt_rmsprop(gamma,C,H,I,b_mnl,p):
      '''  IN: 
-          gamma: (Parameterized) Occupation Numbers (ONs)
+          gamma: (Parametrized) Occupation Numbers (ONs)
           C: NOs guess
           H: Monoelectronic Integrals
           I: Bielectronic Integrals
@@ -411,7 +411,7 @@ def orbopt_rmsprop(gamma,C,H,I,b_mnl,p):
 
 def orbopt_adadelta(gamma, C, H, I, b_mnl, p,):
     '''  IN: 
-          gamma: (Parameterized) Occupation Numbers (ONs)
+          gamma: (Parametrized) Occupation Numbers (ONs)
           C: NOs guess
           H: Monoelectronic Integrals
           I: Bielectronic Integrals
