@@ -20,8 +20,7 @@ complementary roles:
 - `minimizationSolved.py`  
   Provides a complete reference solution with all required optimization
   algorithms already implemented. This file is intended for instructors and
-  reviewers, allowing the accompanying Jupyter notebooks to be executed without
-  requiring students to reimplement the algorithms. Students are not expected
-  to modify or use this file during the activity.
+  reviewers, allowing them to execute straightforward the accompanying Jupyter
+  notebooks. Students are not expected to modify or use this file during the activity.
 
 
