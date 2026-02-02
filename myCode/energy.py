@@ -7,12 +7,12 @@ from minimization import *
 
 def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ=False):
     """
-    Compute the electronic energy using HF or NOF orbital rotations.
+    Compute the electronic energy of HF or NOF using orbital rotations.
 
     This function evaluates the total electronic energy associated with a given
-    set of molecular orbitals. When used in educational mode (educ=True), it
-    also returns auxiliary information that is useful for analyzing convergence
-    behavior during optimization.
+    molecule by optimizing the set of molecular orbitals (HF/NOF) and occupation
+    numbers (NOF). When used in educational mode (educ=True), it also returns auxiliary 
+    information that is useful for analyzing convergence behavior during optimization.
 
     Parameters
     ----------
@@ -29,7 +29,7 @@ def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ
         an initial occupation pattern is constructed internally.
     guess : str, optional
         Initial guess for the molecular orbitals. Accepted values include
-        "HF" (Hartree--Fock guess obtained with Psi4) and "Core" (diagonalization
+        "HF" (Hartree-Fock guess obtained with Psi4) and "Core" (diagonalization
         of the core Hamiltonian). Default is "HF".
     printmode : bool, optional
         If True, detailed information about the calculation and the optimization
@@ -200,7 +200,7 @@ def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ
                 print("")
                 break
 
-        # Txema  incread convergence coherence with ADAM function
+        # Txema  increase convergence coherence with ADAM function
         # print(perturb, E, Estored)
         if (success_orb or np.linalg.norm(grad_orb) < 1e-4) and (
             success_occ or np.linalg.norm(grad_occ) < 1e-4
@@ -282,9 +282,9 @@ def compute_energy(mol, p=None, C=None, n=None, guess="HF", printmode=True, educ
 
 def calc_hf_orbrot(mol, p):
     """
-    Compute the Hartree--Fock energy using orbital rotations.
+    Compute the Hartree-Fock energy using orbital rotations.
 
-    This function evaluates the Hartree--Fock energy by explicitly optimizing
+    This function evaluates the Hartree-Fock energy by explicitly optimizing
     the energy with respect to orbital rotation parameters, rather than using
     a conventional SCF/DIIS procedure. This formulation is adopted to provide
     a controlled and transparent optimization landscape for instructional
@@ -295,7 +295,7 @@ def calc_hf_orbrot(mol, p):
     mol : object
         Molecular object containing geometry and basis-set information.
     p : object
-        Hartree--Fock parameter container,  including optimization algorithm and
+        Hartree-Fock parameter container,  including optimization algorithm and
         learning-rate settings.
 
     Returns
