@@ -30,7 +30,7 @@ Once implemented, students can explore their perfomrance in Hartree-Fock and Nat
 
 ## Ackownledgements
 
-The content is based on and makes use of [PyNOF](https://github.com/felipelewyee/PyNOF) (based on the Donostia Natural Orbital Functional Software, [DoNOF](https://github.com/DoNOF/DoNOFsw)) and [Psi4NumPy](https://github.com/psi4/psi4numpy) (based on [Psi4](https://github.com/psi4/psi4)) in a Jupyter Notebook workspace.
+The content is based on and makes use of [PyNOF](https://github.com/DoNOF/PyNOF) (based on the Donostia Natural Orbital Functional Software, [DoNOF](https://github.com/DoNOF/DoNOFsw)) and [Psi4NumPy](https://github.com/psi4/psi4numpy) (based on [Psi4](https://github.com/psi4/psi4)) in a Jupyter Notebook workspace.
 
 ## About
 
