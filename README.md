@@ -21,12 +21,12 @@ git clone https://github.com/felipelewyee/OptimRotEduc
 
 ## 📝 Usage
 
-The file myCode/minimization.py contains a function called *orbopt_sd*, which can be used for doing orbital optimization with the steepest gradient descent algorithm. Students may use this algorithm as a model to code other gradient based minimization algorithms  (*orbopt_cg*, *orbopt_rmsprop*, *orbopt_adagrad*, and *orbopt_adam*) **required** to run the notebooks.
+The file myCode/minimization.py includes a function named *orbopt_sd*, which performs orbital optimization using the steepest gradient descent method. Students can take this implementation as a reference when programming the additional gradient-based optimization routines (*orbopt_cg*, *orbopt_rmsprop*, *orbopt_adagrad*, and *orbopt_adam*) that are **required** for executing the notebooks.
 
-Once implemented, students can explore their perfomrance in Hartree-Fock and Natural Orbital Functional (NOF) theory. The content is organized in folders:
+Once this has been implemented, students will be able to examine their performance in both Hartree–Fock and Natural Orbital Functional (NOF) theory. The materials are organized into folders, which can be navigated as follows:
 
-- Start with Hartree-Fock (HF folder), where you will a) code the optimization algorithms (in myCode/minimization.py  file) and explore the effect of the step size and b) compare the convergency of the algorithms at their best step size.
-- Follow with Natural Orbital Functional (NOF folder) theory, where you can a) apply the optimization algorithms in a more complex landscape that includes electron correlation, and b) introduce the concept of a dynamic (scheduled) step size for improving convergency.
+- Start with Hartree-Fock (HF folder), where you will a) code the optimization algorithms (in myCode/minimization.py  file) and explore the effect of the step size and b) compare the convergence of the algorithms at their best step size.
+- Follow with Natural Orbital Functional (NOF folder) theory, where you can a) apply the optimization algorithms in a more complex landscape that includes electron correlation, and b) introduce the concept of a dynamic (scheduled) step size for improving convergence.
 
 ## Ackownledgements
 
@@ -34,4 +34,4 @@ The content is based on and makes use of [PyNOF](https://github.com/DoNOF/PyNOF)
 
 ## About
 
-These module was created by Ph.D. Juan Felipe Huan Lew-Yee, Prof. Xabier Lopez, Prof. Elixabete Rezabal, Prof. Mario Piris, and Prof. Jose M. Mercero for teaching in courses at the Chemistry Faculty of the **Euskal Herriko Unibertsitatea (EHU)** in the Basque Country.
+This module was created by Ph.D. Juan Felipe Huan Lew-Yee, Prof. Xabier Lopez, Prof. Elixabete Rezabal, Prof. Mario Piris, and Prof. Jose M. Mercero for teaching in courses at the Chemistry Faculty of the **Euskal Herriko Unibertsitatea (EHU)** in the Basque Country.
