@@ -1,19 +1,12 @@
 """
-minimizationSolved.py
+minimization.py
 
-This file provides a complete reference implementation of the optimization
-algorithms used in the instructional module (e.g., SD, CG, RMSProp, Adam),
-adapted to the PyNOF framework.
-
-It is intended for instructors and reviewers, allowing the accompanying
-Jupyter notebooks to be executed without requiring students to implement the
-algorithms themselves. During the activity, students are expected to work
-exclusively with the file `minimization.py`, where they implement and test
-optimization algorithms starting from a reference steepest descent
-implementation.
-
-This file is not imported or modified during the student workflow and is
-included solely for reference, validation, and review purposes.
+This file provides a template to be filled out by the students, so that they
+can implement the optimization algorithms used in the instructional module 
+(e.g., SD, CG, RMSProp, Adam), adapted to the PyNOF framework. A working version 
+of the stepeest descent algorithm is included as a reference, so that students 
+can use it as a basis for completing the functions that define the other 
+algorithms.
 """
 
 import numpy as np
@@ -23,11 +16,11 @@ import pynof
 
 def orbopt_sd(gamma,C,H,I,b_mnl,p):
      '''  IN: 
-          gamma: Occupation Numbers (ONs)
+          gamma: (Parametrized) Occupation Numbers (ONs)
           C: NOs guess
           H: Monoelectronic Integrals
-          I: Repulsion Integrals
-          b_mnl: RI approximation Integrals
+          I: Bielectronic Integrals
+          b_mnl: Three center Integrals
           p: molecule properties
        OUT:
           best_E: Lowest Energy
@@ -84,11 +77,11 @@ def orbopt_sd(gamma,C,H,I,b_mnl,p):
 
 def orbopt_adam2(gamma,C,H,I,b_mnl,p):
     '''  IN: 
-          gamma: Occupation Numbers (ONs)
+          gamma: (Parametrized) Occupation Numbers (ONs)
           C: NOs guess
           H: Monoelectronic Integrals
-          I: Repulsion Integrals
-          b_mnl: RI approximation Integrals
+          I: Bielectronic Integrals
+          b_mnl: Three center Integrals
           p: molecule properties
        OUT:
           best_E: Lowest Energy
@@ -108,11 +101,11 @@ def orbopt_adam2(gamma,C,H,I,b_mnl,p):
 
 def orbopt_adam(gamma,C,H,I,b_mnl,p):
     '''  IN: 
-          gamma: Occupation Numbers (ONs)
+          gamma: (Parametrized) Occupation Numbers (ONs)
           C: NOs guess
           H: Monoelectronic Integrals
-          I: Repulsion Integrals
-          b_mnl: RI approximation Integrals
+          I: Bielectronic Integrals
+          b_mnl: Three center Integrals
           p: molecule properties
        OUT:
           best_E: Lowest Energy
@@ -128,11 +121,11 @@ def orbopt_adam(gamma,C,H,I,b_mnl,p):
 
 def orbopt_cg(gamma,C,H,I,b_mnl,p):
      '''  IN: 
-          gamma: Occupation Numbers (ONs)
+          gamma: (Parametrized) Occupation Numbers (ONs)
           C: NOs guess
           H: Monoelectronic Integrals
-          I: Repulsion Integrals
-          b_mnl: RI approximation Integrals
+          I: Bielectronic Integrals
+          b_mnl: Three center Integrals
           p: molecule properties
        OUT:
           best_E: Lowest Energy
@@ -147,11 +140,11 @@ def orbopt_cg(gamma,C,H,I,b_mnl,p):
 
 def orbopt_adagrad(gamma,C,H,I,b_mnl,p):
      '''  IN: 
-          gamma: Occupation Numbers (ONs)
+          gamma: (Parametrized) Occupation Numbers (ONs)
           C: NOs guess
           H: Monoelectronic Integrals
-          I: Repulsion Integrals
-          b_mnl: RI approximation Integrals
+          I: Bielectronic Integrals
+          b_mnl: Three center Integrals
           p: molecule properties
        OUT:
           best_E: Lowest Energy
@@ -165,11 +158,11 @@ def orbopt_adagrad(gamma,C,H,I,b_mnl,p):
 
 def orbopt_rmsprop(gamma,C,H,I,b_mnl,p):
     '''  IN: 
-          gamma: Occupation Numbers (ONs)
+          gamma: (Parametrized) Occupation Numbers (ONs)
           C: NOs guess
           H: Monoelectronic Integrals
-          I: Repulsion Integrals
-          b_mnl: RI approximation Integrals
+          I: Bielectronic Integrals
+          b_mnl: Three center Integrals
           p: molecule properties
        OUT:
           best_E: Lowest Energy
@@ -184,11 +177,11 @@ def orbopt_rmsprop(gamma,C,H,I,b_mnl,p):
 
 def orbopt_adadelta(gamma, C, H, I, b_mnl, p,):
     '''  IN: 
-          gamma: Occupation Numbers (ONs)
+          gamma: (Parametrized) Occupation Numbers (ONs)
           C: NOs guess
           H: Monoelectronic Integrals
-          I: Repulsion Integrals
-          b_mnl: RI approximation Integrals
+          I: Bielectronic Integrals
+          b_mnl: Three center Integrals
           p: molecule properties
        OUT:
           best_E: Lowest Energy
