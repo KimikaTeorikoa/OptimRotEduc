@@ -314,7 +314,6 @@ def orbopt_adagrad(gamma,C,H,I,b_mnl,p):
 
      for i in range(p.maxloop):
          nit += 1
-         sq_grad_sums = C.shape[0]
          
          grad = pynof.calcorbg(y*0, n,cj12,ck12,C,H,I,b_mnl,p)
 
